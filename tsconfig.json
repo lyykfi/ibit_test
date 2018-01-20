@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./build",
+    "baseUrl": "./src",
+    "jsx": "preserve",
+    "target": "es5",
+    "module": "commonjs", 
+    "strict": true,
+    "lib": ["es6", "dom"]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+}

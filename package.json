@@ -1,0 +1,26 @@
+{
+  "name": "ibit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.0.34",
+    "awesome-typescript-loader": "^3.4.1",
+    "tslint": "^5.9.1",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
+  },
+  "scripts": {
+    "start": "./node_modules/pm2/bin/pm2 start ./src/server/index.ts -i 1 --name 'api' --no-daemon --watch -f"
+  },
+  "dependencies": {
+    "@types/express": "^4.11.0",
+    "@types/node": "^9.3.0",
+    "@types/react-dom": "^16.0.3",
+    "express": "^4.16.2",
+    "global": "^4.3.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "tslint-react": "^3.4.0"
+  }
+}
