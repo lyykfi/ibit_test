@@ -1,3 +1,16 @@
 {
-    "title": "real deal generator"
+  "title": "real deal generator",
+  "deal": {
+    "buttons": {
+      "back": "Back",
+      "new": "New deal"
+    },
+    "new": {
+      "title": "New deal",
+      "form": {
+        "current_date": "current date",
+        "value": "value"
+      }
+    }
+  }
 }

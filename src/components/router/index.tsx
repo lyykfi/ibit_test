@@ -1,6 +1,6 @@
 import { Platforms } from 'constants/platforms';
 import * as React from 'react';
-import { BrowserRouter, Route, StaticRouter } from 'react-router-dom';
+import { BrowserRouter, Route, StaticRouter, Switch } from 'react-router-dom';
 import routesList from './list';
 
 /**
@@ -24,11 +24,9 @@ export default class Router extends React.Component<IProps, {}> {
         const RouterComponent = String(process.env.PLATFORM) === String(Platforms.BROWSER) ? BrowserRouter : StaticRouter;
 
         return <RouterComponent context={context} location={url}>
-            <div id='router'>
-                {this.props.children}
-
+            <Switch>
                 {routesList.map((item) => <Route key={item.path} {...item} />)}
-            </div>
+            </Switch>
         </RouterComponent>;
     }
 }

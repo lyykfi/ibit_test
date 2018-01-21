@@ -1,3 +1,4 @@
+import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as path from 'path';
 import routes from './routes/index';
@@ -23,6 +24,8 @@ class AppServer {
         this.port = port;
 
         this.express = express();
+
+        this.setPlugins();
         this.setStatic();
         this.mountRoutes();
     }
@@ -41,10 +44,15 @@ class AppServer {
      * @method setStatic
      */
     private setStatic(): void {
-        console.log(process.cwd() + '/build/assets');
-
         this.express.use('/assets', express.static(path.join(process.cwd(), 'build', 'assets')));
         this.express.use('/locales', express.static(path.join(process.cwd(), 'locales')));
+    }
+
+    /**
+     * @method setPlugins
+     */
+    private setPlugins(): void {
+        this.express.use(bodyParser.json());
     }
 
     /**

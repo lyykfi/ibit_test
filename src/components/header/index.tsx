@@ -3,7 +3,7 @@ import { InjectedTranslateProps, translate } from 'react-i18next';
 import './style.less';
 
 interface IProps extends InjectedTranslateProps {
-    buttonRender: () => void;
+    buttonRender?: () => JSX.Element;
 }
 
 /**
@@ -16,12 +16,12 @@ class Header extends React.Component<IProps, {}> {
      * @method render
      */
     public render(): React.ReactNode {
-        const {t} = this.props;
+        const {t, buttonRender} = this.props;
+        const button = buttonRender ? buttonRender() : null;
 
         return <header>
             <p>{t('title')}</p>
-            <div className='button'>
-            </div>
+            {button ? <div className='button'>{button}</div> : null}
         </header>;
     }
 }

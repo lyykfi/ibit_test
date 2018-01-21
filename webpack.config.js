@@ -56,7 +56,7 @@ module.exports = [
 				filename: "stats.json"
 			}),
 			extractLess
-		],
+		]
 	},
 	{
 		name: "server-side rendering",
