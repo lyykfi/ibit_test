@@ -4,6 +4,10 @@
         "quotemark": [true, "single"],
         "semicolon": [true],
         "jsx-wrap-multiline": false,
-        "no-console": false
+        "no-console": false,
+        "no-submodule-imports": false,
+        "no-implicit-dependencies": false,
+        "max-line-length": false,
+        "no-empty-interface": false
     }
 }

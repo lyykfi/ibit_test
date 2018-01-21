@@ -1,30 +1,62 @@
 const path = require("path");
-const assetsPath = path.join(__dirname, "public", "assets");
+const webpack = require("webpack");
+const assetsPath = path.join(__dirname, "build", "assets");
 const publicPath = "assets/";
+const { CheckerPlugin } = require('awesome-typescript-loader');
+const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const extractLess = new ExtractTextPlugin({
+    filename: "[name].[contenthash].css",
+    disable: process.env.NODE_ENV === "development"
+});
 
 const commonLoaders = [
-	{ test: /\.js$/, loader: "jsx-loader" },
-	{ test: /\.png$/, loader: "url-loader" },
-	{ test: /\.jpg$/, loader: "file-loader" },
+	{
+		test: /\.ts|\.tsx$/,
+		use: 'awesome-typescript-loader'
+	},
+	{
+		test: /\.html$/,
+		use: 'html-loader'
+	},
+	{
+		test: /\.less$/,
+		use: extractLess.extract({
+			fallback: 'style-loader',
+			use: ['css-loader','less-loader']
+		})
+	}
 ];
- 
+
+const commonResolve = {
+	extensions: ['.ts', '.tsx', '.js', '.jsx'],
+	modules: [path.resolve(__dirname, 'src'), 'node_modules']
+};
+
 module.exports = [
 	{
 		name: "browser",
-		entry: "./app/entry.js",
+		entry: "./src/browser/index.tsx",
 		output: {
 			path: assetsPath,
 			filename: "[hash].js",
 			publicPath: publicPath
 		},
 		module: {
-			loaders: commonLoaders.concat([
-				{
-					test: /\.tsx?$/,
-					loader: 'awesome-typescript-loader'
-				}
-			])
-		}
+			rules: commonLoaders
+		},
+		resolve: commonResolve,
+		plugins: [
+			new CheckerPlugin(),
+			new webpack.DefinePlugin({
+				'process.env.PLATFORM': JSON.stringify('BROWSER'),
+			}),
+			new StatsWriterPlugin({
+				filename: "stats.json"
+			}),
+			extractLess
+		],
 	},
 	{
 		name: "server-side rendering",
@@ -32,10 +64,21 @@ module.exports = [
 		target: "node",
 		output: {
 			path: assetsPath,
-			filename: "../../server/page.generated.js",
+			filename: "../../build/server.generated.js",
 			publicPath: publicPath,
 			libraryTarget: "commonjs2"
 		},
-		externals: /^[a-z\-0-9]+$/
+		externals: /^[a-z\-0-9]+$/,
+		module: {
+			rules: commonLoaders
+		},
+		resolve: commonResolve,
+		plugins: [
+			new CheckerPlugin(),
+			new webpack.DefinePlugin({
+				'process.env.PLATFORM': JSON.stringify('NODE'),
+			}),
+			extractLess
+		]
 	}
 ];

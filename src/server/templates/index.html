@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TEST APP</title>
+        {{#css}}
+            <link rel="stylesheet" href="/assets/{{src}}">
+        {{/css}}
+    </head>
+    
+    <body>
+        <div id="root">{{{body}}}</div>
+    </body>
+    
+    {{#js}}
+        <script src="/assets/{{src}}"></script>
+    {{/js}}
+</html>
