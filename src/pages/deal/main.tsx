@@ -1,4 +1,5 @@
 import DealList from 'components/deal/list';
+import DealSchedule from 'components/deal/schedule/index';
 import Footer from 'components/footer/index';
 import Header from 'components/header/index';
 import Router from 'components/router/index';
@@ -21,6 +22,7 @@ class DealMainPage extends React.Component<IProps, {}> {
         return <div className='root_inner'>
             <div className='wrapper'>
                 <Header buttonRender={this.renderNewDealButton} />
+                <DealSchedule />
                 <DealList />
             </div>
             <Footer />

@@ -2,6 +2,9 @@
   "title": "real deal generator",
   "copyright": "2017, IBIT LTD",
   "deal": {
+    "schedule": {
+      "title": "Current deals"
+    },
     "buttons": {
       "back": "Back",
       "new": "New deal"

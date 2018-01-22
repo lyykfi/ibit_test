@@ -5,8 +5,8 @@ import * as moment from 'moment';
 import * as React from 'react';
 import { InjectedTranslateProps, translate } from 'react-i18next';
 import { connect, Dispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
+import { bindActionCreators } from 'redux';
 
 /**
  * props
