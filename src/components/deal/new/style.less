@@ -1,0 +1,49 @@
+.deal_new {
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .date {
+            font-size: 80%;
+            color: #494949;
+        }
+    }
+
+    .inner {
+        background: #e7f1fa;
+        padding: 1.5rem 2.5rem;
+        p {
+            padding-bottom: 1rem;
+        }
+        label {
+            display: block;
+            font-size: 80%;
+            color: #494949;
+            padding-bottom: 0.2rem;
+        }
+        .button {
+            font-size: 100%;
+        }
+        input {
+            font-size: 100%;
+            font-weight: bold;
+            padding: 1rem;
+            border: 0px;
+            box-sizing: border-box;
+            &.date {
+                display: block;
+                background: #f4f4f4;
+                font-weight: bold;
+                color: #707070;
+                width: 100%;
+            }
+            &.currencies {
+                width: 20%;
+                background: #c5e3fd;
+            }
+            &.value {
+                width: 80%;
+            }
+        }
+    }
+}

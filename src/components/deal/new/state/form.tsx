@@ -52,7 +52,7 @@ class NewDealFormStateForm extends React.Component<IProps, IState> {
         const {t} = this.props;
         const formatedDate = this.state.currentDate.format('MMMM Do YYYY, h:mm:ss a');
 
-        return <div className='box'>
+        return <div className='box deal_new'>
             <div className='title'>
                 <h2>{t('deal.new.title')}</h2>
                 <p className='date'>{formatedDate}</p>
@@ -62,15 +62,15 @@ class NewDealFormStateForm extends React.Component<IProps, IState> {
                 <form onSubmit={this.handleSubmit}>
                     <p>
                         <label>{t('deal.new.form.current_date')}</label>
-                        <input type='text' value={formatedDate} />
+                        <input type='text' value={formatedDate} className='date' />
                     </p>
                     <p>
                         <label>{t('deal.new.form.value')}</label>
-                        <input type='text' value={Currencies.USD} disabled={true} />
-                        <input min='1' type='number' value={this.state.value} onChange={this.handleChangeValue} autoFocus={true} />
+                        <input type='text' value={Currencies.USD} disabled={true} className='currencies' />
+                        <input min='1' type='number' value={this.state.value} onChange={this.handleChangeValue} autoFocus={true} className='value' />
                     </p>
                     <p>
-                        <button type='submit'>{t('deal.buttons.new')}</button>
+                        <button type='submit' className='button'>{t('deal.buttons.new')}</button>
                     </p>
                 </form>
             </div>
