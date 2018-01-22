@@ -6,9 +6,13 @@ import { reactI18nextModule } from 'react-i18next';
 export function getI18n() {
     const instance = i18n.use(reactI18nextModule);
     const backendOptions: any = {};
+    const reactOptions = {
+        wait: false,
+    };
 
     if (String(process.env.PLATFORM) === String(Platforms.BROWSER)) {
         instance.use(XHR);
+        reactOptions.wait = true;
     } else {
         const Backend = require('i18next-sync-fs-backend');
         instance.use(Backend);
@@ -23,9 +27,7 @@ export function getI18n() {
         fallbackLng: 'en',
         initImmediate: false,
         ns: ['translation'],
-        react: {
-            wait: false,
-        },
+        react: reactOptions,
     });
 
     return instance;

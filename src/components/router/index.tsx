@@ -22,7 +22,7 @@ export default class Router extends React.Component<IProps, {}> {
     public render() {
         const { url, context } = this.props;
         const RouterComponent = String(process.env.PLATFORM) === String(Platforms.BROWSER) ? BrowserRouter : StaticRouter;
-
+        console.log(url);
         return <RouterComponent context={context} location={url}>
             <Switch>
                 {routesList.map((item) => <Route key={item.path} {...item} />)}

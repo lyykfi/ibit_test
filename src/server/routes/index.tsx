@@ -13,7 +13,7 @@ import App from 'components/app/index';
 const routes: any = {
     '/deal': Deal,
     // tslint:disable-next-line:object-literal-sort-keys
-    '*': (req: Request, res: any) => {
+    '*': (req: any, res: any) => {
         const stats: any = require('../../../build/assets/stats.json');
         const context = {};
 
@@ -34,7 +34,7 @@ const routes: any = {
         });
 
         res.send(Mustache.render(String(template), {
-            body: ReactDOMServer.renderToString(<App  context={context} url={req.url} />),
+            body: ReactDOMServer.renderToString(<App  context={context} url={req.originalUrl} />),
             css,
             js,
         }));

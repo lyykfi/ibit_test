@@ -1,4 +1,3 @@
-import { createDeal } from 'actions/deal';
 import { Currencies } from 'constants/currencies';
 import * as moment from 'moment';
 import * as React from 'react';
@@ -31,12 +30,13 @@ interface IProps {
  * @class NewDealForm
  */
 @(connect(
-    (state) => {
-        console.log(state);
-        return {};
+    (state: any) => {
+        return {
+            formState: state.DealAddReducer ? NewDealFormStates.SUCCESS : NewDealFormStates.FORM,
+        };
     },
 ) as any)
-export default class NewDealForm extends React.Component<IProps> {
+export default class NewDealForm extends React.Component<Partial<IProps>> {
     /**
      * @constructor
      * @param props

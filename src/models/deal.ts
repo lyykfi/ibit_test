@@ -1,5 +1,5 @@
 export interface IDeal {
-    id: number;
+    id: string;
     date: Date;
     value: number;
 }

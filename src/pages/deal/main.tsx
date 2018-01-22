@@ -1,3 +1,5 @@
+import DealList from 'components/deal/list';
+import Footer from 'components/footer/index';
 import Header from 'components/header/index';
 import Router from 'components/router/index';
 import { Platforms } from 'constants/platforms';
@@ -18,6 +20,8 @@ class DealMainPage extends React.Component<IProps, {}> {
     public render(): JSX.Element {
         return <div>
             <Header buttonRender={this.renderNewDealButton} />
+            <DealList />
+            <Footer />
         </div>;
     }
 

@@ -1,4 +1,5 @@
 import NewDealForm from 'components/deal/new';
+import Footer from 'components/footer/index';
 import Header from 'components/header/index';
 import Router from 'components/router/index';
 import { Platforms } from 'constants/platforms';
@@ -20,6 +21,7 @@ class DealAddPage extends React.Component<IProps, {}> {
         return <div>
             <Header buttonRender={this.renderBackButton} />
             <NewDealForm />
+            <Footer />
         </div>;
     }
 

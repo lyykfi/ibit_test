@@ -1,3 +1,4 @@
+import { getDealList } from 'actions/deal/list';
 import { Deal } from 'constants/deal';
 import { IDeal } from 'models/deal';
 import { Moment } from 'moment';
@@ -26,13 +27,14 @@ export function createDeal(value: number, date: Moment) {
         const resultJson = await result.json();
 
         dispatch(resultJson.success ? createDealSuccess(resultJson.deal) : createDealFail());
+        dispatch(getDealList());
     };
 }
 
 /**
  * @function createDealSuccess
  */
-function createDealSuccess(deal: IDeal) {
+export function createDealSuccess(deal: IDeal) {
     return {
         payload: deal,
         type: Deal.ADD_SUCCESS,
@@ -42,7 +44,7 @@ function createDealSuccess(deal: IDeal) {
 /**
  * @function createDealFail
  */
-function createDealFail() {
+export function createDealFail() {
     return {
         payload: DealErrors.UNKNOWN_ERROR,
         type: Deal.ADD_FAIL,
@@ -50,10 +52,10 @@ function createDealFail() {
 }
 
 /**
- * get deal list
- * @method getDealList
+ * @function createDealClear
  */
-export function getDealList(): object {
-    console.log('get');
-    return {};
+export function createDealClear() {
+    return {
+        type: Deal.ADD_CLEAR,
+    };
 }

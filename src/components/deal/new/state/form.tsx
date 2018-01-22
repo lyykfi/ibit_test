@@ -1,4 +1,4 @@
-import { createDeal } from 'actions/deal';
+import { createDeal } from 'actions/deal/add';
 import { Currencies } from 'constants/currencies';
 import * as moment from 'moment';
 import * as React from 'react';
@@ -17,7 +17,7 @@ interface IProps extends InjectedTranslateProps {
  * state
  */
 interface IState {
-    value: string;
+    value: number;
     currentDate: moment.Moment;
 }
 
@@ -41,7 +41,7 @@ class NewDealFormStateForm extends React.Component<IProps, IState> {
 
         this.state = {
             currentDate: moment(),
-            value: '',
+            value: 1,
         };
     }
 
@@ -67,7 +67,7 @@ class NewDealFormStateForm extends React.Component<IProps, IState> {
                     <p>
                         <label>{t('deal.new.form.value')}</label>
                         <input type='text' value={Currencies.USD} disabled={true} />
-                        <input type='text' value={this.state.value} onChange={this.handleChangeValue} autoFocus={true} />
+                        <input min='1' type='number' value={this.state.value} onChange={this.handleChangeValue} autoFocus={true} />
                     </p>
                     <p>
                         <button type='submit'>{t('deal.buttons.new')}</button>
@@ -91,7 +91,7 @@ class NewDealFormStateForm extends React.Component<IProps, IState> {
      */
     private handleSubmit = (event: any) => {
         if (this.props.createDeal) {
-            this.props.createDeal(parseInt(this.state.value, 10), this.state.currentDate);
+            this.props.createDeal(this.state.value, this.state.currentDate);
         }
 
         event.preventDefault();

@@ -1,9 +1,18 @@
 {
   "title": "real deal generator",
+  "copyright": "2017, IBIT LTD",
   "deal": {
     "buttons": {
       "back": "Back",
       "new": "New deal"
+    },
+    "list": {
+      "title": "Deals info",
+      "table": {
+        "id": "ID",
+        "date": "Date",
+        "value": "Value"
+      }
     },
     "new": {
       "title": "New deal",
