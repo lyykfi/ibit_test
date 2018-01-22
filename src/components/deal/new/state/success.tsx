@@ -6,12 +6,14 @@ import * as React from 'react';
 import { InjectedTranslateProps, translate } from 'react-i18next';
 import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router';
 
 /**
  * props
  */
 interface IProps extends InjectedTranslateProps {
     createDealClear?: () => void;
+    history?: any;
     deal?: IDeal;
 }
 
@@ -36,6 +38,7 @@ interface IState {
         createDealClear: bindActionCreators(createDealClear, dispatch),
     }),
 ) as any)
+@(withRouter as any)
 class NewDealFormStateSuccess extends React.Component<IProps, IState> {
     /**
      * @constructor
@@ -79,6 +82,10 @@ class NewDealFormStateSuccess extends React.Component<IProps, IState> {
     private handleClickOk = () => {
         if (this.props.createDealClear) {
             this.props.createDealClear();
+        }
+
+        if (this.props.history) {
+            this.props.history.push('/');
         }
     }
 }
