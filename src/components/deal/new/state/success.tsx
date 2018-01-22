@@ -56,17 +56,20 @@ class NewDealFormStateSuccess extends React.Component<IProps, IState> {
         const {t, deal} = this.props;
         const formatedDate = deal ? moment(deal.date).format('MMMM Do YYYY, h:mm:ss a') : '';
 
-        return deal ? <div className='box'>
+        return deal ? <div className='box deal_new_success'>
             <div className='title'>
                 <h2>{t('deal.new.success.title')}</h2>
-                <p className='date'>{deal.date}</p>
+                <p className='date'>{formatedDate}</p>
             </div>
 
             <div className='inner'>
-                <div className='success'>{deal.value}</div>
+                <i className='fa fa-check-circle-o' aria-hidden='true'>{null}</i>
+                <div className='success'>{Currencies.USD} {deal.value.toFixed(2)}</div>
             </div>
 
-            <div className='button' onClick={this.handleClickOk}>OK</div>
+            <div className='next'>
+                <div className='button' onClick={this.handleClickOk}>OK</div>
+            </div>
         </div> : null;
     }
 

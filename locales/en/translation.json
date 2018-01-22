@@ -21,6 +21,9 @@
       "form": {
         "current_date": "current date",
         "value": "value"
+      },
+      "success": {
+        "title": "Your deal confirmed!"
       }
     }
   }
