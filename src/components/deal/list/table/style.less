@@ -1,5 +1,34 @@
 .deals {
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .count {
+        background: #7ebaff;
+        color: #fff;
+        padding: 0.2rem 2rem;
+        border-radius: 3px;
+    }
     table {
         width: 100%;
+        th, td {
+            padding: 1rem 2rem;
+            font-size: 90%;
+            color: #666;
+            .delete {
+                font-size: 120%;
+                color: red;
+                cursor: pointer;
+            }
+        }
+        tbody {
+            tr {
+                background: #f5f9fd;
+                &:nth-child(2n + 1) {
+                    background: #e7f1fa;
+                }
+            }
+        }
     }
 }

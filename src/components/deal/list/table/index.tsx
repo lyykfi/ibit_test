@@ -29,10 +29,10 @@ export default class DealListTable extends React.Component<Partial<IProps>> {
     public render(): React.ReactNode {
         const {t, deals} = this.props;
 
-        return deals && t ? <div className='deals'>
+        return deals && t ? <div className='deals box'>
             <div className='title'>
                 <h2>{t('deal.list.title')}</h2>
-                <p className='count'>{deals.length}</p>
+                <p className='count'>{t('deal.list.total', {count: deals.length})}</p>
             </div>
             <table>
                 <thead>

@@ -1,16 +1,5 @@
-/**
- * Global Reset of all HTML Elements
- *
- * Resetting all of our HTML Elements ensures a smoother
- * visual transition between browsers. If you don't believe me,
- * try temporarily commenting out this block of code, then go
- * and look at Mozilla versus Safari, both good browsers with
- * a good implementation of CSS. The thing is, all browser CSS
- * defaults are different and at the end of the day if visual
- * consistency is what we're shooting for, then we need to
- * make sure we're resetting all spacing elements.
- *
- */
+@import "~font-awesome/css/font-awesome.min.css";
+
  html, body {
 	border: 0;
 	font-family: "Helvetica-Neue", "Helvetica", Arial, sans-serif;
@@ -57,4 +46,48 @@ a img {
 
 :focus {
   outline: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+#root {
+  min-height: 100%;
+  .root_inner {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+}
+
+.button {
+  background: #4a90e2;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 0.5rem 5rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  &:hover {
+    background: darken(#4a90e2, 30%);
+  }
+}
+
+.wrapper {
+  flex: 1;
+}
+
+h2 {
+  font-size: 140%;
+  font-weight: normal;
+  color: #979797;
+}
+
+.box {
+  padding: 2rem;
+  .title {
+    padding-bottom: 1rem;
+  }
 }

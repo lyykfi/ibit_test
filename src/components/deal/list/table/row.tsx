@@ -3,13 +3,14 @@ import * as React from 'react';
 
 import { deleteDeal } from 'actions/deal/delete';
 import { IDeal } from 'models/deal';
+import { InjectedTranslateProps, translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 /**
  * props
  */
-interface IProps {
+interface IProps extends InjectedTranslateProps {
     deal: IDeal;
     deleteDeal: (id: string) => void;
 }
@@ -28,6 +29,7 @@ interface IProps {
         deleteDeal: bindActionCreators(deleteDeal, dispatch),
     }),
 ) as any)
+@(translate() as any)
 export default class DealListTableRow extends React.Component<Partial<IProps>> {
     /**
      * @method render
@@ -37,10 +39,10 @@ export default class DealListTableRow extends React.Component<Partial<IProps>> {
 
         return deal ? <tr>
             <td>{deal.id}</td>
-            <td>{deal.date}</td>
+            <td>{moment(deal.date).format('MMMM Do YYYY, h:mm:ss a')}</td>
             <td>{deal.value}</td>
             <td>
-                <span className='delete' onClick={this.handleDeleteClick}>del</span>
+                <i className='delete fa fa-times' onClick={this.handleDeleteClick}>{null}</i>
             </td>
         </tr> : null;
     }
@@ -49,8 +51,10 @@ export default class DealListTableRow extends React.Component<Partial<IProps>> {
      * @method handleDeleteClick
      */
     private handleDeleteClick = () => {
-        if (this.props.deleteDeal && this.props.deal) {
-            this.props.deleteDeal(this.props.deal.id);
+        if (this.props.t && confirm(this.props.t('deal.list.delete'))) {
+            if (this.props.deleteDeal && this.props.deal) {
+                this.props.deleteDeal(this.props.deal.id);
+            }
         }
     }
 }

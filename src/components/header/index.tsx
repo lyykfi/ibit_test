@@ -20,8 +20,8 @@ class Header extends React.Component<IProps, {}> {
         const button = buttonRender ? buttonRender() : null;
 
         return <header>
-            <p>{t('title')}</p>
-            {button ? <div className='button'>{button}</div> : null}
+            <h2>{t('title')}</h2>
+            {button ? <p className='right'>{button}</p> : null}
         </header>;
     }
 }

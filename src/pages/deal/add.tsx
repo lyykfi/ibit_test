@@ -18,9 +18,11 @@ class DealAddPage extends React.Component<IProps, {}> {
      * @method render
      */
     public render(): JSX.Element {
-        return <div>
-            <Header buttonRender={this.renderBackButton} />
-            <NewDealForm />
+        return <div className='root_inner'>
+            <div className='wrapper'>
+                <Header buttonRender={this.renderBackButton} />
+                <NewDealForm />
+            </div>
             <Footer />
         </div>;
     }
@@ -29,7 +31,7 @@ class DealAddPage extends React.Component<IProps, {}> {
      * @method renderBackButton
      */
     private renderBackButton = (): JSX.Element => {
-        return <Link to='/'>{this.props.t('deal.buttons.back')}</Link>;
+        return <Link to='/' className='button'>{this.props.t('deal.buttons.back')}</Link>;
     }
 }
 

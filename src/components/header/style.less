@@ -1,0 +1,28 @@
+header {
+    background: #f3f3f3;
+    min-height: 150px;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+        color: #494949;
+        font-size: 120%;
+        margin-left: 2rem;
+        padding-left: 40px;
+        position: relative;
+        line-height: 120%;
+        &::before {
+            content: ' ';
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            background: #4a90e2;
+            height: 25px;
+            width: 25px;
+            border-radius: 100%;
+        }
+    }
+    p {
+        margin-right: 2rem;
+    }
+}
