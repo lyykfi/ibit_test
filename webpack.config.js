@@ -74,7 +74,10 @@ module.exports = [
 				filename: "stats.json"
 			}),
 			extractLess
-		]
+		],
+		node: {
+			fs: "empty"
+		},
 	},
 	{
 		name: "server-side rendering",
